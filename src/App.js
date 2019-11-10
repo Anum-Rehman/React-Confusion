@@ -1,15 +1,17 @@
 import React from 'react';
-import { Navbar, NavbarBrand } from 'react-bootstrap';
+import { Navbar } from 'react-bootstrap';
 import './App.css';
+import Menu from './components/MenuComponent'
 
 function App() {
   return (
-    <div className="App">
-    <Navbar dark color="bg-primary">
+    <div>
+    <Navbar bg="primary" variant="dark">
       <div className="container">
-        <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
+        <Navbar.Brand href="/">Ristorante Con Fusion</Navbar.Brand>
       </div>
     </Navbar>
+    <Menu/>
   </div>
   );
 }
