@@ -1,40 +1,25 @@
 import React, {Component} from 'react';
 import {Card,} from 'react-bootstrap';
+import DishDetail from './Dishdetail';
 
 class Menu extends Component{
     //required whenever we create a component class
     constructor(props){
         super(props);
         this.state={
-            selectedDish: null
+            selectedDish: null,
         }
     }
 
     onDishSelect(dish){
-        this.setState({selectedDish:dish})
-    }
-
-    renderDish(dish){
-        if(dish !=null){
-            return(
-                <Card>
-                    <Card.Img width="100%" src={dish.image} alt={dish.name} />
-                    <Card.Body>
-                        <Card.Title>{dish.name}</Card.Title>
-                        <Card.Text>{dish.description}</Card.Text>
-                    </Card.Body>
-                </Card>
-            )
-        }
-        else{
-            return(
-                <div></div>
-            )
-        }
+        this.setState({
+            selectedDish:dish,
+        })
     }
 
     render(){
         const menu = this.props.dishes.map((dish)=>{
+        const comments = dish.comments;
             return(
                 <div key={dish.id} className="col-12 col-md-5 m-1">
                     <Card onClick={()=>this.onDishSelect(dish)}>
@@ -57,11 +42,7 @@ class Menu extends Component{
                 <div className="row">
                         {menu}
                 </div>
-                <div className="row">
-                <div  className="col-12 col-md-5 m-1">
-                    {this.renderDish(this.state.selectedDish)}
-                  </div>
-                </div>
+                    <DishDetail dish={this.state.selectedDish}/>
             </div>
         );
     }

@@ -9,7 +9,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      dishes: DISHES
+      dishes: DISHES,
+      comments: DISHES.comments
     };
   }
 render(){
@@ -20,7 +21,7 @@ render(){
         <Navbar.Brand href="/">Ristorante Con Fusion</Navbar.Brand>
       </div>
     </Navbar>
-    <Menu dishes={this.state.dishes}/>
+    <Menu dishes={this.state.dishes} comments={this.state.comments}/>
   </div>
   );
 }
