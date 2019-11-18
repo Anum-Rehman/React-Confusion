@@ -21,24 +21,24 @@ class Header extends Component{
         <Navbar.Collapse id="basic-navbar-nav">
         <Nav navbar>
             <Nav.Item>
-                <Nav.Link className="nav-link" href="/home">
+                <NavLink className="nav-link" to="/home">
                     <span className="fa fa-home fa-lg"></span> Home
-                </Nav.Link>
+                </NavLink>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link className="nav-link" href="/aboutus">
+                <NavLink className="nav-link" to="/aboutus">
                     <span className="fa fa-info fa-lg"></span> About Us
-                </Nav.Link>
+                </NavLink>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link className="nav-link" href="/menu">
+                <NavLink className="nav-link" to="/menu">
                     <span className="fa fa-list fa-lg"></span> Menu
-                </Nav.Link>
+                </NavLink>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link className="nav-link" href="/contactus">
+                <NavLink className="nav-link" to="/contactus">
                     <span className="fa fa-address-card fa-lg"></span> Contact Us
-                </Nav.Link>
+                </NavLink>
             </Nav.Item>
         </Nav>
         </Navbar.Collapse>
