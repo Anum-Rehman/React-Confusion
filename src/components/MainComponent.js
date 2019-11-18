@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import Home from './Home';
 import Menu from './MenuComponent'
 import DishDetail from './Dishdetail';
 import { DISHES } from '../shared/dishes';
+import {Switch,Route, Redirect} from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -15,20 +17,23 @@ class Main extends Component {
     };
   }
 
-  onDishSelect(dishId){
-    this.setState({
-        selectedDish:dishId,
-    })
-}
 
 render(){
+    const HomePage = () =>{
+        return(
+            <Home/>
+        )
+    }
   return (
     <div>
         <Header/>
-    <Menu dishes={this.state.dishes} comments={this.state.comments}
-    onClick={(dishId)=>this.onDishSelect(dishId)}/>
-    {/* As filter return arrayof match item that's why 0 will select only 1st item */}
-    <DishDetail dish={this.state.dishes.filter((dish)=> dish.id === this.state.selectedDish)[0]}/>
+        <Switch>
+            <Route path="/home" component={HomePage}/>
+            {/* Use arrow function in component attribute of route to make use of props */}
+            <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}/>} />
+            {/* To define default route we can use redirect */}
+            <Redirect to="/home"/>
+        </Switch>
     <Footer/>
   </div>
   );

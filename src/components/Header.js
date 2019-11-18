@@ -1,15 +1,47 @@
 import React, {Component} from 'react';
-import { Navbar, Jumbotron } from 'react-bootstrap';
+import { Navbar, Jumbotron, Nav } from 'react-bootstrap';
+import {NavLink} from 'react-router-dom';
 
 class Header extends Component{
+    constructor(props){
+        super(props);
+    }
+
     render(){
         return(
             // Short form of React Fragment <></> to group togther a bunch of react component or we can use <React.Fragment> as most of the browser don't understand short form
             //Through this we can directly add our view into the react dom without a div
             <React.Fragment>
-            <Navbar variant="dark">
+            <Navbar variant="dark" expand="md">
       <div className="container">
-        <Navbar.Brand href="/">Ristorante Con Fusion</Navbar.Brand>
+      <Navbar.Brand className="mr-auto" href="/">
+            <img src="assets/images/logo.png" height="30" width="41" alt="Ristorante Con Fusion"/>
+        </Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+        <Nav navbar>
+            <Nav.Item>
+                <Nav.Link className="nav-link" href="/home">
+                    <span className="fa fa-home fa-lg"></span> Home
+                </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link className="nav-link" href="/aboutus">
+                    <span className="fa fa-info fa-lg"></span> About Us
+                </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link className="nav-link" href="/menu">
+                    <span className="fa fa-list fa-lg"></span> Menu
+                </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link className="nav-link" href="/contactus">
+                    <span className="fa fa-address-card fa-lg"></span> Contact Us
+                </Nav.Link>
+            </Nav.Item>
+        </Nav>
+        </Navbar.Collapse>
       </div>
     </Navbar>
     <Jumbotron>
