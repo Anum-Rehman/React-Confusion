@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './Home';
 import Menu from './MenuComponent'
 import DishDetail from './Dishdetail';
+import About from './AboutComponent';
 import { DISHES } from '../shared/dishes';
 import {COMMENTS} from '../shared/comments';
 import {PROMOTIONS} from '../shared/promotions';
@@ -50,6 +51,7 @@ render(){
             <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}/>} />
             <Route exact path="/menu/:dishId" component={DishWithId} />
             <Route exact path="/contactus" component={Contact} />
+            <Route exact path="/aboutus" component={()=><About leaders={this.state.leaders}/>} />
             {/* To define default route we can use redirect */}
             <Redirect to="/home"/>
         </Switch>
