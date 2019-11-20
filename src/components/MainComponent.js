@@ -33,6 +33,14 @@ render(){
             />
         )
     }
+
+    const DishWithId=({match})=>{
+        return(
+            <DishDetail dish={this.state.dishes.filter((dish)=>dish.id === parseInt(match.params.dishId,10))[0]}
+            comments={this.state.comments.filter((comment)=>comment.dishId === parseInt(match.params.dishId,10))}
+            />
+        )
+    }
   return (
     <div>
         <Header/>
@@ -40,6 +48,7 @@ render(){
             <Route path="/home" component={HomePage}/>
             {/* Use arrow function in component attribute of route to make use of props */}
             <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes}/>} />
+            <Route exact path="/menu/:dishId" component={DishWithId} />
             <Route exact path="/contactus" component={Contact} />
             {/* To define default route we can use redirect */}
             <Redirect to="/home"/>
