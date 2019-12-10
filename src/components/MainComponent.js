@@ -9,7 +9,8 @@ import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/A
 import Header from './Header';
 import Footer from './Footer';
 import Contact from './Contact';
-import { actions } from 'react-redux-form'
+import { actions } from 'react-redux-form';
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
 
 const mapStateToProps = state =>{
     return{
@@ -66,16 +67,20 @@ render(){
   return (
     <div>
         <Header/>
-        <Switch>
-            <Route path="/home" component={HomePage}/>
-            {/* Use arrow function in component attribute of route to make use of props */}
-            <Route exact path="/menu" component={()=><Menu dishes={this.props.dishes}/>} />
-            <Route exact path="/menu/:dishId" component={DishWithId} />
-            <Route exact path="/contactus" component= {()=> <Contact resetFeedbackForm={this.props.resetFeedbackForm}/>} />
-            <Route exact path="/aboutus" component={()=><About leaders={this.props.leaders}/>} />
-            {/* To define default route we can use redirect */}
-            <Redirect to="/home"/>
-        </Switch>
+        <TransitionGroup>
+          <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+            <Switch>
+                <Route path="/home" component={HomePage}/>
+                {/* Use arrow function in component attribute of route to make use of props */}
+                <Route exact path="/menu" component={()=><Menu dishes={this.props.dishes}/>} />
+                <Route exact path="/menu/:dishId" component={DishWithId} />
+                <Route exact path="/contactus" component= {()=> <Contact resetFeedbackForm={this.props.resetFeedbackForm}/>} />
+                <Route exact path="/aboutus" component={()=><About leaders={this.props.leaders}/>} />
+                {/* To define default route we can use redirect */}
+                <Redirect to="/home"/>
+            </Switch>
+          </CSSTransition>
+        </TransitionGroup>
     <Footer/>
   </div>
   );
