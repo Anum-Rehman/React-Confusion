@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import { Loading } from './Loading';
 import { baseUrl } from '../shared/baseUrl'
 
-function RenderMenuItem({ dish, onClick }) {
+function RenderMenuItem({ dish }) {
     return (
         <Card>
             <Link to={`/menu/${dish.id}`}>
@@ -20,7 +20,6 @@ function RenderMenuItem({ dish, onClick }) {
 //Another way of writing a functional component
 const Menu =  (props)=>{
     const menu = props.dishes.dishes.map((dish) => {
-        const comments = dish.comments;
         return (
             <div key={dish.id} className="col-12 col-md-5 m-1">
                 <RenderMenuItem dish={dish}/>
